@@ -1,0 +1,15 @@
+    .tile{
+        height: 80px;
+        border: 1px solid #000;
+        font-size: 24px;
+        background-color: #959999;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .blank {
+        background: #eee;
+        cursor: default;
+    }

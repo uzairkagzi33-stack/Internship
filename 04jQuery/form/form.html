@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Form Validation</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+<div class="cont">
+
+    <form id="myForm">
+        
+        <div class="flex">
+            <label for="name">Name</label>
+            <input type="text" id="name" autocomplete="name">
+            <div class="error"></div>
+        </div>
+        
+        <div class="flex">
+            <label for="email">Email</label>
+            <input type="text" id="email" autocomplete="email">
+            <div class="error"></div>
+        </div>
+        
+        <div class="flex">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <div class="error"></div>
+        </div>
+        
+        <div class="flex">
+            <label for="confirm">Confirm Password</label>
+            <input type="password" id="confirm">
+            <div class="error"></div>
+        </div>
+        
+        <div>
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" id="gender" value="male"> Male
+            <input type="radio" name="gender" id="gender" value="female"> Female
+            <br>
+            <div class="error" id="genderError"></div>
+        </div>
+        
+        <button type="submit">Submit</button>
+        
+    </form>
+</div>
+    
+    <script src="validate.js"></script>
+</body>
+</html>

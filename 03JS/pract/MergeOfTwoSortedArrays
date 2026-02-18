@@ -1,0 +1,6 @@
+let a = [1,3,4,6]
+let b = [2,5,8]
+
+let c = a.concat(b);
+console.log(c);
+console.log(c.sort());

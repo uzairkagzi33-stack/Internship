@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="calc.js"></script>
+    <style>
+        *{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="num1" placeholder="Enter first number" style="margin-right: 3px;">
+    <!-- <label for=""></label> -->
+    
+    <span id="ope"></span>
+    <input type="number" id="num2" placeholder="Enter second number" style="margin-left: 3px;">
+    <br><br>
+    <button id="add">+</button>
+    <button id="subtract">-</button>
+    <button id="multiply">*</button>
+    <button id="divide">/</button>
+    <button id="calculate">=</button>
+    <br><br>
+    <div id="result">Result: </div>
+    <small style="color: gray;">tip : Tap on = to display the result</small>
+</body>
+</html>

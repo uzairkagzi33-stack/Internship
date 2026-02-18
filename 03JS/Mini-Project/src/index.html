@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+  <div class="max-w-md mx-auto mt-10 min-h-96 ml-5 ">
+  <h1 class="text-2xl font-bold mb-4">User List App</h1>
+  
+  <div class="flex-column mb-4 md:flex-row justify-content-center align-center ">
+    <input id="usernameInput" class="border p-2 rounded-l" type="text" placeholder="Enter username">
+    <button id="addUserBtn" class="bg-blue-500 text-white px-4 rounded-r py-2 mt-2 sm:mt-0 sm:ml-2 hover:cursor-pointer hover:bg-blue-600 shadow-2xl">Add</button>
+    <button id="downloadBtn" class="bg-green-500 text-white px-4 py-2 rounded mt-2 sm:mt-0 sm:ml-2 hover:cursor-pointer hover:bg-green-600 shadow-2xl">Download JSON</button>
+  </div>
+
+  <ul id="userList" class="list-disc pl-5"></ul>
+</div>
+<script src="main.js"></script> 
+</body>
+</html> 
