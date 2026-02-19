@@ -58,12 +58,12 @@ while True:
         name, email, emp_type, salary = emp_data[1], emp_data[2],emp_data[3], float(emp_data[4]) #?shaping data
         
         if emp_type == "full":                              #?Dynamic obj creation
-            emp = FullTimeEmployee(name, email, salary)
+            emp = FullTimeEmployee(name, email, salary)     
         else:
             hours = int(input("Enter number of hours worked : "))
             emp = PartTimeEmployee(name,email,salary,hours)
         
-        total = salary_service.process_salary(emp,emp_id)       #! passing type so that it can call the fxn acc to emp_type
+        total = salary_service.process_salary(emp,emp_id)       #! passing obj(emp) so that it can call the fxn acc to emp_type
         print("Salary Processed : ", total)  
     elif choice == "6":                                         #? Exit
         break
