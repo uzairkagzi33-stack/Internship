@@ -1,10 +1,10 @@
 from services.salary_processor import SalaryProcessor
 from services.db_connection import get_connection
 
-class SalaryService(SalaryProcessor):
+class SalaryService(SalaryProcessor):               #! IMplements the Interface
     
-    def process_salary(self, employee, employee_id):
-        total_salary = employee.calculate_salary()
+    def process_salary(self, employee, employee_id): #! method defined
+        total_salary = employee.calculate_salary()  #? calls polymorphic method
         
         conn = get_connection()
         cursor = conn.cursor()

@@ -21,3 +21,10 @@ create table salaries (
     total_salary decimal(10,2),    
 	foreign key (employee_id) references employees(id)
 );
+
+insert into departments values (1,"HR");
+select * from employees;
+
+select * from salaries;
+
+select * from departments;

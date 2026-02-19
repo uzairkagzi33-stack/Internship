@@ -2,7 +2,7 @@ from services.db_connection import get_connection
 
 class EmployeeService:
     
-    def add_employee(self, name, email, emp_type, salary, dept_id):
+    def add_employee(self, name, email, emp_type, salary, dept_id): #? To add Emp
         conn = get_connection()
         cursor = conn.cursor()
         

@@ -2,7 +2,7 @@ from services.db_connection import get_connection
 
 class DepartmentService:
     
-    def add_department(self, name):
+    def add_department(self, name): #? For inserting an department
         conn = get_connection()
         cursor = conn.cursor()
         
@@ -11,7 +11,7 @@ class DepartmentService:
         conn.close()
         
         
-    def get_department(self):
+    def get_department(self):   #? Get dept
         conn = get_connection()
         cursor = conn.cursor()
         
