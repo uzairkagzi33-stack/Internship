@@ -1,4 +1,4 @@
-from models.full_time_employee import FullTime 
+from models.full_time_employee import FullTime
 from models.part_time_employee import PartTimeEmployee
 from services.employee_service import EmployeeService       #? Imported models and sevices.
 from services.department_service import DepartmentService
