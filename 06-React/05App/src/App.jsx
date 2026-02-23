@@ -30,7 +30,8 @@ function App() {
   }
   
   useEffect(() => {
-    SetPassword();  
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    SetPassword();
       }, [SetPassword, numAllowed, charAllowed, length]); 
 
   return (
