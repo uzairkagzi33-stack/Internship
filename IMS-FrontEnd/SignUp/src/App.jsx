@@ -1,5 +1,6 @@
-import SignUpPage from "./pages/SignUpPage";
+import { RouterProvider } from "react-router-dom";
+import router from "./router/router";
 
 export default function App() {
-  return <SignUpPage />;
+  return <RouterProvider router={router} />;
 }
