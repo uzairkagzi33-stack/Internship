@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SignUpCard from "../components/signup/SignUpCard";
+import { useNavigate } from "react-router-dom";
 import SignUpForm from "../components/signup/SignUpForm";
 
 // SignUpPage is now lean — no layout concerns, just state + card + form
@@ -7,10 +8,12 @@ export default function SignUpPage() {
   const [fullName,   setFullName]   = useState("");
   const [department, setDepartment] = useState("");
   const [role,       setRole]       = useState(null);
+  const navigate = useNavigate()
 
   const handleNext = () => {
     if (!fullName || !department || !role) return;
     alert(`Proceeding as ${role}: ${fullName} from ${department}`);
+    navigate("/signup2")
   };
 
   return (

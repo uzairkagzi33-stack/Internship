@@ -3,7 +3,8 @@ import { createBrowserRouter } from "react-router-dom";
 import AuthLayout          from "../Layouts/AuthLayout";
 import SignUpPage          from "../pages/SignUpPage";
 import LoginPage           from "../pages/LogInPage";
-// import ForgotPasswordPage from "../pages/ForgotPasswordPage"; // add more here
+import SignUpPassword       from "../pages/SignUpPassword"
+import ForgetPasswordPage from "../pages/ForgetPasswordPage"; // add more here
 
 // ── Router ────────────────────────────────────────────────────────────────────
 //
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/signup", element: <SignUpPage /> },
       { path: "/login",  element: <LoginPage /> },
-      // { path: "/forgot-password", element: <ForgotPasswordPage /> },
+      { path:"/signup2", element:<SignUpPassword/>},
+      { path: "/forget-password", element: <ForgetPasswordPage /> },
     ],
   },
 ]);

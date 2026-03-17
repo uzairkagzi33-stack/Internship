@@ -1,26 +1,27 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, LockKeyhole  } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
-import { InputField }      from "../components/signup/SignUpForm";
-import ForgetPassword from "../components/login/ForgetPassword";
+import { InputField,Back }      from "../components/signup/SignUpForm";
+// import ForgetPassword from "../components/login/ForgetPassword";
+import { useState } from "react";
+import PasswordIcon from "../components/icons/PasswordIcon";
 
-export default function LoginPage() {
+export default function ForgetPasswordPage() {
   const [email,    setEmail]    = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!email || !password) return;
-    // TODO: call your auth API here
-    navigate("/dashboard");
+//
+navigate("./login")
   };
 
   return (
     <SignUpCard
-      title="Login to your account"
-      subtitle="Enter your detail to login."
-      minHeight={420}
+      title="Forget Password?"
+      subtitle="Enter your email to reset your password."
+      icon={<PasswordIcon />}
+      minHeight={420}   
     >
       <form
         className="flex flex-col"
@@ -28,7 +29,7 @@ export default function LoginPage() {
         onSubmit={e => { e.preventDefault(); handleLogin(); }}
       >
         <InputField
-          id="email"
+          id="passwordReset"
           label="Email Address"
           placeholder="Enter your email"
           type="email"
@@ -36,7 +37,7 @@ export default function LoginPage() {
           onChange={e => setEmail(e.target.value)}
           icon={Mail}
         />
-        <InputField
+        {/* <InputField
           id="password"
           label="Password"
           placeholder="Enter your password"
@@ -44,9 +45,9 @@ export default function LoginPage() {
           value={password}
           onChange={e => setPassword(e.target.value)}
           icon={LockKeyhole}
-        />
+        /> */}
       </form>
-      <ForgetPassword />
+      {/* <ForgetPassword /> */}
 
       <button
         type="button"
@@ -54,18 +55,18 @@ export default function LoginPage() {
         className="mt-4 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
         style={{ width: 373, height: 42, fontSize: 15 }}
       >
-        Login
+        Send OTP
       </button>
-
-      <p
+          <Back footerText="Back" footerLinkTo="/login" />
+      {/* <p
         className="mt-4 text-center text-gray-400 "
         style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}
       >
         Don't have an account?{" "}
         <a href="/signup" className="text-blue-600 font-medium underline underline-offset-2">
           Sign up now
-        </a>
-      </p>
+        </a></p> */}
+      
     </SignUpCard>
   );
 }
