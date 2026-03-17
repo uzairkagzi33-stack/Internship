@@ -214,16 +214,19 @@ isPassword={true}
 export function Back({footerText, footerLinkTo}){
   return footerText && (
     <div
-      style={{ width: 373, height: 42, fontSize: 13, lineHeight: "16px", textAlign: "left" }}
+    className=" flex mt-4 text-gray-950 underline-offset-2 underline font-bold"
+      style={{ width: 373, height: 42, textAlign: "left" }}
     >
     <div
-    className=" flex mt-4 text-gray-950 underline-offset-2 underline cursor-pointer hover:text-blue-600 active:text-blue-800 font-bold"
+    className="cursor-pointer hover:text-blue-600 active:text-blue-800 flex"
+    style={{ }}
+
     >
 
       <ArrowLeft size={16} />
       <a
         href={footerLinkTo}
-        style={{ width: 34, height: 20 }}
+        style={{ width: 34, height: 20,fontSize: 13, lineHeight: "16px" }}
       >
         {footerText}
       </a>

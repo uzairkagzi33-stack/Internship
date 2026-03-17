@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Mail, LockKeyhole  } from "lucide-react";
+import { Mail } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
 import { InputField,Back }      from "../components/signup/SignUpForm";
 // import ForgetPassword from "../components/login/ForgetPassword";
@@ -13,7 +13,7 @@ export default function ForgetPasswordPage() {
 
   const handleLogin = () => {
 //
-navigate("./login")
+navigate("/login")
   };
 
   return (
