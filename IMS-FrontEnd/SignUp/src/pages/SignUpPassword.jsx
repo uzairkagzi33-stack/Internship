@@ -23,7 +23,6 @@ export default function SignUpPage() {
     <SignUpCard
       title="Register for System Access"
       subtitle="Enter your details to Sign up."
-      icon
     >
       {/* <SignUpForm
         fullName={fullName}       setFullName={setFullName}
