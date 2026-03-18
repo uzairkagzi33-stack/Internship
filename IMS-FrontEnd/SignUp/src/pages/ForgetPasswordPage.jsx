@@ -2,16 +2,27 @@ import { useNavigate } from "react-router-dom";
 import { Mail } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
 import { InputField,Back }      from "../components/signup/SignUpForm";
-// import ForgetPassword from "../components/login/ForgetPassword";
 import { useState } from "react";
 import PasswordIcon from "../components/icons/PasswordIcon";
+import { UseEmail } from "../components/contexts/EmailContext";
 
 export default function ForgetPasswordPage() {
-  const [email,    setEmail]    = useState("");
-  // const [password, setPassword] = useState("");
+
+  const [localEmail,    setLocalEmail]    = useState("");
   const navigate = useNavigate();
+  const { setEmail } = UseEmail();
+  const [error, setError ] =useState('')
 
   const handleLogin = () => {
+    if (!localEmail.trim()) {
+      setError("Please enter your email address.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(localEmail)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setEmail(localEmail); 
 //
 navigate("/verify-otp")
   };
@@ -31,11 +42,12 @@ navigate("/verify-otp")
       >
         <InputField
           id="passwordReset"
+          error= {error}
           label="Email Address"
           placeholder="Enter your email"
           type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          value={localEmail}
+          onChange={e => setLocalEmail(e.target.value)}
           icon={Mail}
         />
       </form>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 //   value      (string)   — 4-char controlled string e.g. "4709"
 //   onChange   (fn)       — called with full 4-digit string on every change
 //   length     (number)   — number of boxes, default 4
-export default function OtpInput({ value = "", onChange, length = 4 }) {
+export default function OtpInput({ value = "", onChange, length = 4, error }) {
     // const id = useId()
   const refs = useRef([]);
 
@@ -52,6 +52,7 @@ export default function OtpInput({ value = "", onChange, length = 4 }) {
       className="flex"
       style={{ width: 376, height: 64, gap: 10 }}
     >
+    <span style={{color:"red"}}>{error}</span>
       {digits.map((digit, idx) => (
         <input
           key={idx}

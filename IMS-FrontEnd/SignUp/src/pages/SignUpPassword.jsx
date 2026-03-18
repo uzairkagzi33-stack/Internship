@@ -9,11 +9,13 @@ export default function SignUpPage() {
   const [email,   setEmail]         =    useState("");
   const [password1, setPassword1]   =    useState("");
   const [password2, setPassword2]   =    useState(""); 
+  const [error, setError] = useState("")
 
   const handleNext = () => {
     if (!email || !password1 || !password2) return;
     if (password1 !== password2) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!")
+      // alert("Passwords do not match!");
       return;
     }
     alert(`Proceeding to register: ${email}`); 
@@ -34,6 +36,7 @@ export default function SignUpPage() {
             buttonLabel="Register"
             footerText="Back"
               footerLinkTo="/signup"
+              error = {error}
         />
         
     </SignUpCard>

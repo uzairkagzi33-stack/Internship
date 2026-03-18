@@ -8,11 +8,16 @@ import ForgetPassword from "../components/login/ForgetPassword";
 export default function LoginPage() {
   const [email,    setEmail]    = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!email || !password) return;
-    // TODO: call your auth API here
+    if (!email || !password) {
+
+      setError('Enter valid credentials');
+      return;
+    }
+    
     navigate("/dashboard");
   };
 
@@ -35,6 +40,7 @@ export default function LoginPage() {
           value={email}
           onChange={e => setEmail(e.target.value)}
           icon={Mail}
+          error = {error}
         />
         <InputField
           id="password"

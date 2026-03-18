@@ -8,10 +8,14 @@ export default function SignUpPage() {
   const [fullName,   setFullName]   = useState("");
   const [department, setDepartment] = useState("");
   const [role,       setRole]       = useState(null);
+  const [error, setError] =useState("")
   const navigate = useNavigate()
 
   const handleNext = () => {
-    if (!fullName || !department || !role) return;
+    if (!fullName || !department || !role) {
+      setError("EnterFull Creds")
+      return;
+    }
     alert(`Proceeding as ${role}: ${fullName} from ${department}`);
     navigate("/signup2")
   };
@@ -32,6 +36,7 @@ export default function SignUpPage() {
         footerText="Already have an account?"
         footerLinkText="Login"
         footerLinkTo="/login"
+        error={error}
       />
     </SignUpCard>
   );

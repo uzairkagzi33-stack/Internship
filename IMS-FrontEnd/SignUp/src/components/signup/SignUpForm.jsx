@@ -11,16 +11,24 @@ import {  Eye, EyeOff } from "lucide-react";
 //   onChange    (fn)        — change handler
 //   icon        (ReactNode) — lucide icon component
 //   type        (string)    — input type, default "text"
-export function InputField({ id, label, placeholder, value, onChange, icon: Icon, type = "text",}) {
+export function InputField({ id, label, placeholder, value, onChange, icon: Icon, type = "text", error}) {
   return (
-    <div className="flex flex-col" style={{ width: 373, height: 58, gap: 4 }}>
+    <div className="flex flex-col" style={{ width: 373, height: 58, gap: 8 }}>
+      <div
+      className="flex justify-between "
+      >
+
       <label
         htmlFor={id}
-        className="text-gray-900 font-medium"
+        className="text-gray-900 font-medium justify-start"
         style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
       >
         {label}
       </label>
+<span className=" text-red-600"
+style={{fontSize: 12, height:14}}
+>{error}</span>
+      </div>
       <div className="relative flex items-center" style={{ height: 36 }}>
         {Icon && (
           <Icon
@@ -98,11 +106,13 @@ export function EmailPassword({
   buttonLabel = "Register",
   onSubmit, footerText = "Back",
   footerLinkTo = "/signup",
-  alignFooter = 'left'
+  alignFooter = 'left',
+  error
+  
 } 
 ) {
   return (
-    <div className="flex flex-col" style={{ width: 373, height: 58, gap: 4 }}>
+    <div className="flex flex-col" style={{ width: 373, minHeight: 210, gap: 24 }}>
     <form
     className="flex flex-col"
         style={{ width: 373, gap: 12 }}
@@ -117,10 +127,12 @@ export function EmailPassword({
         onChange={e=> setEmail(e.target.value)}
         icon={Mail}
         type="email"
+          error={error}
         />
         <PasswordField 
         value={passwordA}
-        onChange={setPasswordA}/>
+        onChange={setPasswordA}
+        />
         
         <PasswordField 
         id="ConfirmPassword"
@@ -128,16 +140,19 @@ export function EmailPassword({
         value={passwordB}
         onChange={setPasswordB}/>
     </form>
+   
+
      <button
         type="button"
         onClick={onSubmit}
-        className="mt-4 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
+        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
         style={{ width: 373, minHeight: 42, fontSize: 15 }}
       >
         {buttonLabel}
       </button>
-<Back footerText={footerText} footerLinkTo={footerLinkTo}  align={alignFooter} backArrow={"true"}/>
+      <Back footerText={footerText} footerLinkTo={footerLinkTo}  align={alignFooter} backArrow={"true"}/>
 
+   
     </div>
   );
 }
@@ -186,21 +201,24 @@ export function PasswordField({
   label       = "Password",
   placeholder = "• • • • • • • • • • ",
   value,
-  onChange,
+  onChange, error
 }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex flex-col" style={{ width: 373, height: 58, gap: 4 }}>
-
-      <label
-        htmlFor={id}
-        className="text-gray-900 font-medium"
-        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
-      >
-        {label}
-      </label>
-
+    <div className="flex flex-col" style={{ width: 373, height: 70, gap: 8 }}>
+      <div className="flex justify-between">
+        <label
+          htmlFor={id}
+          className="text-gray-900 font-medium justify-start"
+          style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
+        >
+          {label}
+        </label>
+        <span className="text-red-600" style={{fontSize: 12}}>
+          {console.log(`${error}`)}
+        </span>
+      </div>
       <div className="relative flex items-center" style={{ height: 36 }}>
 
         {/* Lock — left */}
@@ -245,6 +263,7 @@ export function PasswordField({
 
       </div>
     </div>
+    // </div>
   );
 }
 
@@ -283,7 +302,7 @@ export default function SignUpForm({
   footerText     = "Already have an account?",
   footerLinkText = "Login",
   footerLinkTo   = "/login", 
-  roleOptions,
+  roleOptions,error
 }) {
   return (
     <>
@@ -300,6 +319,7 @@ export default function SignUpForm({
           value={fullName}
           onChange={e => setFullName(e.target.value)}
           icon={CircleUserRound}
+          error={error}
         />
         <InputField
           id="department"

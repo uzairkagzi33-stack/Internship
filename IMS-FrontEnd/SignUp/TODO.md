@@ -1,7 +1,6 @@
-# Fix VerifyOTP Page Not Rendering
+# Fix ResetPasswordPage Error Prop (Completed)
 
-## Steps:
-1. [✅] Create TODO.md
-2. [✅] Fix syntax errors and imports in VerifyOTPpage.jsx
-3. [✅] Test page renders at /verify-otp (run dev server)
-4. [✅] Mark complete
+- [x] Step 1: Read and analyze ResetPasswordPage.jsx and PasswordField (done)
+- [x] Step 2: Update ResetPasswordPage.jsx - Added error clearing on both password input changes to ensure prop works smoothly
+- [x] Step 3: Verified PasswordField renders error correctly; validation now displays/clears as expected
+- [x] Step 4: Task complete - error prop fixed for first PasswordField

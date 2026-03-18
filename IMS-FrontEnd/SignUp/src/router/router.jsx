@@ -7,6 +7,7 @@ import SignUpPassword       from "../pages/SignUpPassword"
 import ForgetPasswordPage from "../pages/ForgetPasswordPage"; // add more here
 import VerifyOTPpage from "../pages/VerifyOTPpage";
 import ResetPasswordPage from "../pages/ResetPasswordPage"
+import { EmailProvider } from "../components/contexts/EmailContext";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,17 @@ const router = createBrowserRouter([
       { path: "/signup", element: <SignUpPage /> },
       { path: "/login",  element: <LoginPage /> },
       { path:"/signup2", element:<SignUpPassword/>},
-      { path: "/forget-password", element: <ForgetPasswordPage /> },
-      { path:"/verify-otp" , element: <VerifyOTPpage/>},
+      { path: "/forget-password",
+        element: 
+        <EmailProvider>
+          <ForgetPasswordPage /> 
+        </EmailProvider>
+        },
+      { path:"/verify-otp" , element: 
+        <EmailProvider>
+          <VerifyOTPpage/>
+        </EmailProvider>
+    },
       { path:"/reset-password" , element: <ResetPasswordPage/>},
 
     ],
