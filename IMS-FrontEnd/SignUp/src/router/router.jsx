@@ -5,17 +5,8 @@ import SignUpPage          from "../pages/SignUpPage";
 import LoginPage           from "../pages/LogInPage";
 import SignUpPassword       from "../pages/SignUpPassword"
 import ForgetPasswordPage from "../pages/ForgetPasswordPage"; // add more here
-
-// ── Router ────────────────────────────────────────────────────────────────────
-//
-// AuthLayout wraps all auth pages:
-//   /signup  → SignUpPage
-//   /login   → LoginPage
-//
-// To add a new auth page:
-//   1. Create src/pages/YourPage.jsx  (just a <SignUpCard> + content, no layout)
-//   2. Import it here
-//   3. Add a <Route path="/your-path" element={<YourPage />} /> inside AuthLayout
+import VerifyOTPpage from "../pages/VerifyOTPpage";
+import ResetPasswordPage from "../pages/ResetPasswordPage"
 
 const router = createBrowserRouter([
   {
@@ -25,6 +16,9 @@ const router = createBrowserRouter([
       { path: "/login",  element: <LoginPage /> },
       { path:"/signup2", element:<SignUpPassword/>},
       { path: "/forget-password", element: <ForgetPasswordPage /> },
+      { path:"/verify-otp" , element: <VerifyOTPpage/>},
+      { path:"/reset-password" , element: <ResetPasswordPage/>},
+
     ],
   },
 ]);

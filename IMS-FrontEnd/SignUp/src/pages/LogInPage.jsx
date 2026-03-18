@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, LockKeyhole  } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
-import { InputField }      from "../components/signup/SignUpForm";
+import { InputField, Footer}      from "../components/signup/SignUpForm";
 import ForgetPassword from "../components/login/ForgetPassword";
 
 export default function LoginPage() {
@@ -46,26 +46,25 @@ export default function LoginPage() {
           icon={LockKeyhole}
         />
       </form>
-      <ForgetPassword />
+      <ForgetPassword
+      linkTo = '/forget-password'
+      linkText ='Forgot password?'
+      />
 
       <button
         type="button"
         onClick={handleLogin}
-        className="mt-4 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
+        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
         style={{ width: 373, height: 42, fontSize: 15 }}
       >
         Login
       </button>
-
-      <p
-        className="mt-4 text-center text-gray-400 "
-        style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}
-      >
-        Don't have an account?{" "}
-        <a href="/signup" className="text-blue-600 font-medium underline underline-offset-2">
-          Sign up now
-        </a>
-      </p>
+      <Footer
+        footerLinkTo={"/signup"}
+        footerText={"Don't have an account? "}
+        footerLinkText={"Sign up now"}
+      />
+      
     </SignUpCard>
   );
 }

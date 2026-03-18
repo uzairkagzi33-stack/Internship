@@ -1,6 +1,7 @@
-# TODO: Fix Back Element Not Rendering
+# Fix VerifyOTP Page Not Rendering
 
-1. ✅ Fix syntax in SignUpForm.jsx Back component
-2. ✅ Fix prop passing in ForgetPasswordPage.jsx 
-3. ✅ Test the fix
-
+## Steps:
+1. [✅] Create TODO.md
+2. [✅] Fix syntax errors and imports in VerifyOTPpage.jsx
+3. [✅] Test page renders at /verify-otp (run dev server)
+4. [✅] Mark complete

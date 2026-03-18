@@ -1,76 +1,51 @@
-import React from "react";
-
-const VerifyEmailIcon = (props) => {
+// ── VerifyEmailIcon ───────────────────────────────────────────────────────────
+// Same structure as CustomIcon — 88×88 circular icon with
+// a white inner card containing the verify-email glyph.
+//
+// Props:
+//   size  (number) — icon size in px, default 88
+//
+export default function VerifyEmailIcon({ size = 88 }) {
   return (
     <svg
-      width={88}
-      height={88}
+      width={size}
+      height={size}
       viewBox="0 0 88 88"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
+      {/* Outer circle — gradient fill + gradient stroke */}
       <rect
-        x="0.5"
-        y="0.5"
-        width="87"
-        height="87"
+        x="0.5" y="0.5"
+        width="87" height="87"
         rx="43.5"
-        fill="url(#paint0_linear)"
+        fill="url(#paint0_linear_ve)"
       />
       <rect
-        x="0.5"
-        y="0.5"
-        width="87"
-        height="87"
+        x="0.5" y="0.5"
+        width="87" height="87"
         rx="43.5"
-        stroke="url(#paint1_linear)"
+        stroke="url(#paint1_linear_ve)"
       />
 
-      <g filter="url(#filter0_d)">
+      {/* Inner white card with drop shadow */}
+      <g filter="url(#filter0_d_ve)">
         <rect x="16" y="16" width="56" height="56" rx="28" fill="white" />
-        <rect
-          x="16.5"
-          y="16.5"
-          width="55"
-          height="55"
-          rx="27.5"
-          stroke="#E5E7EB"
-        />
+        <rect x="16.5" y="16.5" width="55" height="55" rx="27.5" stroke="#E5E7EB" />
 
+        {/* Email + checkmark glyph */}
         <path
-          d="M32 38L44 46L56 38"
-          stroke="#4B5563"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="32"
-          y="38"
-          width="24"
-          height="16"
-          rx="2"
-          stroke="#4B5563"
-          strokeWidth="2"
-        />
-
-        <path
-          d="M38 48L42 52L50 44"
-          stroke="#10B981"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M54.5 45.4081C53.3783 45.0108 52.167 44.9393 51.0064 45.2018C49.8457 45.4644 48.7832 46.0503 47.9417 46.8918C47.1003 47.7332 46.5144 48.7958 46.2518 49.9564C45.9892 51.1171 46.0607 52.3284 46.458 53.4501H34.55C34.2715 53.4501 34.0045 53.3394 33.8075 53.1425C33.6106 52.9456 33.5 52.6785 33.5 52.4V35.6C33.5 35.3216 33.6106 35.0545 33.8075 34.8576C34.0045 34.6607 34.2715 34.55 34.55 34.55H53.45C53.7285 34.55 53.9955 34.6607 54.1925 34.8576C54.3894 35.0545 54.5 35.3216 54.5 35.6V45.4081ZM44.063 43.6672L37.3304 37.9499L35.9706 39.5501L44.0766 46.4329L52.0367 39.5449L50.6633 37.9562L44.064 43.6672H44.063ZM51.35 54.5L47.6372 50.7873L49.1229 49.3025L51.35 51.5307L55.0628 47.8178L56.5475 49.3025L51.35 54.5Z"
+          fill="#4B5563"
         />
       </g>
 
       <defs>
+        {/* Drop shadow filter for the inner card */}
         <filter
-          id="filter0_d"
-          x="15"
-          y="16"
-          width="58"
-          height="58"
+          id="filter0_d_ve"
+          x="15" y="16"
+          width="58" height="58"
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
@@ -88,25 +63,14 @@ const VerifyEmailIcon = (props) => {
             type="matrix"
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
           />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow"
-            result="shape"
-          />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_ve" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_ve" result="shape" />
         </filter>
 
+        {/* Outer circle fill gradient — subtle gray fade */}
         <linearGradient
-          id="paint0_linear"
-          x1="44"
-          y1="0"
-          x2="44"
-          y2="88"
+          id="paint0_linear_ve"
+          x1="44" y1="0" x2="44" y2="88"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#E4E5E7" stopOpacity="0.48" />
@@ -114,12 +78,10 @@ const VerifyEmailIcon = (props) => {
           <stop offset="1" stopColor="#E4E5E7" stopOpacity="0" />
         </linearGradient>
 
+        {/* Outer circle stroke gradient — fades out at bottom */}
         <linearGradient
-          id="paint1_linear"
-          x1="44"
-          y1="0"
-          x2="44"
-          y2="88"
+          id="paint1_linear_ve"
+          x1="44" y1="0" x2="44" y2="88"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#E4E5E7" />
@@ -128,6 +90,4 @@ const VerifyEmailIcon = (props) => {
       </defs>
     </svg>
   );
-};
-
-export default VerifyEmailIcon;
+}

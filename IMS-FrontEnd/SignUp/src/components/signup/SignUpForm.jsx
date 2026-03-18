@@ -1,4 +1,6 @@
 import { CircleUserRound, Building2, Mail, LockKeyhole, ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import {  Eye, EyeOff } from "lucide-react";
 
 // ── Reusable Input Field ──────────────────────────────────────────────────────
 // Props:
@@ -9,7 +11,7 @@ import { CircleUserRound, Building2, Mail, LockKeyhole, ArrowLeft } from "lucide
 //   onChange    (fn)        — change handler
 //   icon        (ReactNode) — lucide icon component
 //   type        (string)    — input type, default "text"
-export function InputField({ id, label, placeholder, value, onChange, icon: Icon, type = "text", isPassword}) {
+export function InputField({ id, label, placeholder, value, onChange, icon: Icon, type = "text",}) {
   return (
     <div className="flex flex-col" style={{ width: 373, height: 58, gap: 4 }}>
       <label
@@ -33,14 +35,10 @@ export function InputField({ id, label, placeholder, value, onChange, icon: Icon
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-        //   className={isPassword ? "flex w-full pr-3 text-gray-900  bg-white border placeholder-gray-600 border-gray-200 rounded-lg outline-none  focus:border-blue-500 transition-all placeholder:font-semibold placeholder:tracking-wider placeholder:text-3xl  ":"w-full pr-3 text-gray-900  bg-white border placeholder-gray-500 border-gray-200 rounded-lg outline-none  focus:border-blue-500 transition-all "}
-        // style={ isPassword ? {height: 36, fontSize: 17, gap: 3,paddingLeft: Icon ? 32 : 12}  : 
-        //         {height: 36, fontSize: 14, paddingLeft: Icon ? 32 : 12}
-        //       }
-               className={isPassword ? "w-full pr-3 text-gray-900 bg-white border placeholder-gray-500 border-gray-200 rounded-lg outline-none focus:border-blue-500 placeholder:font-bold  transition-all tracking-widest  placeholder:text-md placeholder:  placeholder:tracking-widest font-bold text-md"  : "w-full  pr-3 text-gray-900 bg-white border placeholder-gray-500 border-gray-200 rounded-lg outline-none focus:border-blue-500 transition-all"}
-        style={isPassword ? {height: 36, paddingLeft: Icon ? 32 : 12, letterSpacing: '0.3em'} : {height: 36, fontSize: 14, paddingLeft: Icon ? 32 : 12}}
+               className= "w-full  pr-3 text-gray-900 bg-white border placeholder-gray-500 border-gray-200 rounded-lg outline-none focus:border-blue-500 transition-all"
+        style={{height: 36, fontSize: 14, paddingLeft: Icon ? 32 : 12}}
         /> 
-        {/* fontSize: 14, */}
+        
         
       </div>
     </div>
@@ -100,6 +98,7 @@ export function EmailPassword({
   buttonLabel = "Register",
   onSubmit, footerText = "Back",
   footerLinkTo = "/signup",
+  alignFooter = 'left'
 } 
 ) {
   return (
@@ -119,84 +118,15 @@ export function EmailPassword({
         icon={Mail}
         type="email"
         />
-        <InputField 
-        id='password1'
-        label='Password'
-        placeholder= "• • • • • • • • • • "
+        <PasswordField 
         value={passwordA}
-        onChange={setPasswordA}
-        icon={LockKeyhole}
-        type="password"
-isPassword={true}
-        />
-        <InputField 
-        id='password2'
-        label='Confirm Password'
-        placeholder= "• • • • • • • • • • "
-        value={passwordB}
-        onChange={setPasswordB}
-        icon={LockKeyhole}
-        type="password"
-        isPassword={true}
-        />
+        onChange={setPasswordA}/>
+        
+        <PasswordField 
+        id="ConfirmPassword"
 
-      {/* <label
-        htmlFor="email"
-        className="text-gray-900 font-medium"
-        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
-      >
-        Email
-      </label>
-      <div className="relative flex items-center" style={{ height: 36 }}>
-        <input
-          id="email"
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          Icon:Mail
-          onChange={e => setEmail(e.target.value)}
-          className="w-full pr-3 text-gray-900 placeholder-gray-500 bg-white border border-gray-200 rounded-lg outline-none  focus:border-blue-500 transition-all"
-          style={{ height: 36, fontSize: 14, paddingLeft: 12 }}
-        />
-      </div>
-      <label
-        htmlFor="password1"
-        className="text-gray-900 font-medium"
-        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
-      >
-        Password
-      </label>
-      <div className="relative flex items-center" style={{ height: 36 }}>
-        <input
-          id="password1"
-          icon={LockKeyhole}
-          type="password"
-          placeholder="Enter your password"
-          value={password1}
-          onChange={e => setPassword1(e.target.value)}
-          className="w-full pr-3 text-gray-900 placeholder-gray-500 bg-white border border-gray-200 rounded-lg outline-none  focus:border-blue-500 transition-all"
-          style={{ height: 36, fontSize: 14, paddingLeft: 12 }}
-        />
-      </div>
-      <label
-        htmlFor="password2"
-        className="text-gray-900 font-medium"
-        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
-      >
-        Confirm Password
-      </label>
-      <div className="relative flex items-center" style={{ height: 36 }}>
-        <input
-          id="password2"
-          type="password"
-          icon={LockKeyhole}
-          placeholder="Confirm your password"
-          value={password2}
-          onChange={e => setPassword2(e.target.value)}
-          className="w-full pr-3 text-gray-900 placeholder-gray-500 bg-white border border-gray-200 rounded-lg outline-none  focus:border-blue-500 transition-all"
-          style={{ height: 36, fontSize: 14, paddingLeft: 12 }}
-        />
-      </div> */}
+        value={passwordB}
+        onChange={setPasswordB}/>
     </form>
      <button
         type="button"
@@ -206,34 +136,132 @@ isPassword={true}
       >
         {buttonLabel}
       </button>
-<Back footerText={footerText} footerLinkTo={footerLinkTo} />
+<Back footerText={footerText} footerLinkTo={footerLinkTo}  align={alignFooter} backArrow={"true"}/>
 
     </div>
   );
 }
-export function Back({footerText, footerLinkTo}){
+export function Back({footerText, footerLinkTo, align = 'center', backArrow = 'true'}){
   return footerText && (
     <div
-    className=" flex mt-4 text-gray-950 underline-offset-2 underline font-bold"
-      style={{ width: 373, height: 42, textAlign: "left" }}
+      className={`flex w-full text-gray-950 px-2.5 py-4 gap-0.5 underline-offset-2 underline font-bold ${align === 'left' ? 'justify-start' : 'justify-center'}`}
+      style={{ width: 373, height: 42 }}
     >
-    <div
-    className="cursor-pointer hover:text-blue-600 active:text-blue-800 flex"
-    style={{ }}
-
-    >
-
-      <ArrowLeft size={16} />
-      <a
-        href={footerLinkTo}
-        style={{ width: 34, height: 20,fontSize: 13, lineHeight: "16px" }}
-      >
-        {footerText}
-      </a>
-    </div>
+      <div 
+      
+      className="cursor-pointer  hover:text-blue-600 active:text-blue-800 flex items-center gap-1">
+        { (backArrow == "true") ?
+        <ArrowLeft size={16} />:null
+        }
+        
+        <a
+          href={footerLinkTo}
+          className="font-medium leading-5 tracking-tighter"
+          style={{ width :50, height:20 }}
+        >
+          {footerText}
+        </a>
+      </div>
     </div>
   );
 }
+export function Button({ onNext, buttonLabel = "Next" }){
+  return (
+    <button
+        type="button"
+        onClick={onNext}
+        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
+        style={{ width: 373, minHeight:42, fontSize: 15 }}
+      >
+        {buttonLabel}
+      </button>
+  )
+}
+
+
+
+
+export function PasswordField({
+  id          = "password",
+  label       = "Password",
+  placeholder = "• • • • • • • • • • ",
+  value,
+  onChange,
+}) {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div className="flex flex-col" style={{ width: 373, height: 58, gap: 4 }}>
+
+      <label
+        htmlFor={id}
+        className="text-gray-900 font-medium"
+        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
+      >
+        {label}
+      </label>
+
+      <div className="relative flex items-center" style={{ height: 36 }}>
+
+        {/* Lock — left */}
+        <LockKeyhole
+          size={15}
+          className="absolute left-3 text-gray-600 pointer-events-none"
+          strokeWidth={1.5}
+        />
+
+        {/* Input */}
+        <input
+          id={id}
+          type={show ? "text" : "password"}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          //, letterSpacing: '0.3em'  placeholder:font-bold  transition-all tracking-widest  placeholder:text-md placeholder:tracking-widest
+          className="w-full px-8 text-gray-900 placeholder:tracking-tighter bg-white border placeholder-gray-400 border-gray-200 rounded-lg outline-none focus:border-blue-500 "
+          style={{ height: 36, paddingLeft: 32, letterSpacing:'0.15rem'}}  
+        />
+
+        {/* Eye toggle — right, inside input */}
+        <button
+          type="button"
+          tabIndex={-1}
+          onClick={() => setShow(prev => !prev)}
+          aria-label={show ? "Hide password" : "Show password"}
+          className="absolute right-2 flex items-center justify-center text-gray-400 hover:text-gray-500 transition-colors"
+          style={{ padding: 4 }}
+        >
+          {show
+            ? <EyeOff size={15} strokeWidth={1.5}  
+          className=" text-gray-600 pointer-events-none"
+
+            />
+            : <Eye    size={15} strokeWidth={1.5} 
+          className=" text-gray-600 pointer-events-none"
+
+            />
+          }
+        </button>
+
+      </div>
+    </div>
+  );
+}
+
+
+export function Footer({ footerText, footerLinkText, footerLinkTo }) {
+  return footerLinkText ? (
+    <p className="text-center text-gray-500" style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}>
+      {footerText}{" "}
+      <a href={footerLinkTo} className="text-blue-600 font-medium underline underline-offset-2">
+        {footerLinkText}
+      </a>
+    </p>
+  ) : (<p className="mt-4 text-center text-gray-500" style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}>
+      {footerText}
+      </p>)
+}
+
 
 // ── SignUpForm ────────────────────────────────────────────────────────────────
 // Props:
@@ -289,27 +317,18 @@ export default function SignUpForm({
       </form>
 
       {/* Submit button: 373×42, outside form */}
-      <button
-        type="button"
-        onClick={onNext}
-        className="mt-4 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
-        style={{ width: 373, minHeight:42, fontSize: 15 }}
-      >
-        {buttonLabel}
-      </button>
+      <Button 
+        onNext={onNext}
+        buttonLabel={buttonLabel}
 
+      />
+      <Footer 
+        footerText={footerText}
+        footerLinkText={footerLinkText}
+        footerLinkTo={footerLinkTo}
+      />
       {/* Footer link: 373×16 */}
-      {footerText && (
-        <p
-          className="mt-4 text-center text-gray-500"
-          style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}
-        >
-          {footerText}{" "}
-          <a href={footerLinkTo} className="text-blue-600 font-medium underline underline-offset-2">
-            {footerLinkText}
-          </a>
-        </p>
-      )}
+      
     </>
   );
 }

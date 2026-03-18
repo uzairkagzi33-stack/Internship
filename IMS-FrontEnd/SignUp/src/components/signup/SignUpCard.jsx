@@ -3,7 +3,7 @@ import CustomIcon from "../icons/CustomIcon";
 // ── Content Divider ───────────────────────────────────────────────────────────
 function ContentDivider() {
   return (
-    <div style={{ width: 373, height: 0, marginTop: 20, marginBottom: 20 }}>
+    <div style={{ width: 373, height: 0, marginTop: 10, marginBottom: 10 }}>
       <hr className="border-t border-[#E5E7EB]" style={{ margin: 0 }} />
     </div>
   );
@@ -12,7 +12,7 @@ function ContentDivider() {
 // ── Card Header ───────────────────────────────────────────────────────────────
 function CardHeader({ icon, title, subtitle }) {
   return (
-    <div className="flex flex-col items-center" style={{ width: 373 }}>
+    <div className="flex flex-col items-center" style={{ width: 373, gap:8 }}>
       <div style={{ width: 88, height: 88 }}>
         {icon ?? <CustomIcon />}
       </div>
@@ -52,13 +52,13 @@ export default function SignUpCard({
   icon,
   showDivider = true,
   width       = 437,
-  minHeight   = 578,
+  minHeight   = 600,
   children,
 }) {
   return (
     <div
-      className="relative z-10 bg-white rounded-2xl shadow-md flex flex-col items-center"
-      style={{ width, minHeight, padding: "32px" }}
+      className="relative z-10 bg-white rounded-3xl shadow-md flex flex-col items-center"
+      style={{ width, minHeight, padding: "32px", gap:"24px" }}
     >
       <CardHeader icon={icon} title={title} subtitle={subtitle} />
       {showDivider && <ContentDivider />}

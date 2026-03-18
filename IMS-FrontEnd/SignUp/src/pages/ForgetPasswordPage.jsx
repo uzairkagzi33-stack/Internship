@@ -13,7 +13,7 @@ export default function ForgetPasswordPage() {
 
   const handleLogin = () => {
 //
-navigate("/login")
+navigate("/verify-otp")
   };
 
   return (
@@ -21,7 +21,8 @@ navigate("/login")
       title="Forget Password?"
       subtitle="Enter your email to reset your password."
       icon={<PasswordIcon />}
-      minHeight={420}   
+      minHeight={440}   
+      width={468}
     >
       <form
         className="flex flex-col"
@@ -37,15 +38,6 @@ navigate("/login")
           onChange={e => setEmail(e.target.value)}
           icon={Mail}
         />
-        {/* <InputField
-          id="password"
-          label="Password"
-          placeholder="Enter your password"
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          icon={LockKeyhole}
-        /> */}
       </form>
       {/* <ForgetPassword /> */}
 
@@ -58,15 +50,6 @@ navigate("/login")
         Send OTP
       </button>
           <Back footerText="Back" footerLinkTo="/login" />
-      {/* <p
-        className="mt-4 text-center text-gray-400 "
-        style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}
-      >
-        Don't have an account?{" "}
-        <a href="/signup" className="text-blue-600 font-medium underline underline-offset-2">
-          Sign up now
-        </a></p> */}
-      
     </SignUpCard>
   );
 }

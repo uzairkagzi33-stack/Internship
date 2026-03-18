@@ -23,17 +23,9 @@ export default function SignUpPage() {
     <SignUpCard
       title="Register for System Access"
       subtitle="Enter your details to Sign up."
+      width={437}
+      minHeight={610}
     >
-      {/* <SignUpForm
-        fullName={fullName}       setFullName={setFullName}
-        department={department}   setDepartment={setDepartment}
-        role={role}               setRole={setRole}
-        onNext={handleNext}
-        buttonLabel="Next"
-        footerText="Already have an account?"
-        footerLinkText="Login"
-        footerLinkTo="/login"
-      /> */}
         <EmailPassword
             email={email} setEmail={setEmail}
             password1={password1} setPassword1={setPassword1}
@@ -43,10 +35,7 @@ export default function SignUpPage() {
             footerText="Back"
               footerLinkTo="/signup"
         />
-        {/* <Back 
-        footerText="Back"
-        footerLinkTo="/signup"
-        /> */}
+        
     </SignUpCard>
   );
 } 
