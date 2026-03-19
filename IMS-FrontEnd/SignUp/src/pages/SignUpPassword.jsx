@@ -1,23 +1,26 @@
 import { useState } from "react";
 import SignUpCard from "../components/signup/SignUpCard";
-import SignUpForm, { Back } from "../components/signup/SignUpForm";
-import { EmailPassword } from "../components/signup/SignUpForm";
-import PasswordIcon from "../components/icons/PasswordIcon";
+import { Mail } from "lucide-react";
+import { InputField, PasswordField } from "../components/signup/SignUpForm";
+import  { Back } from "../components/signup/SignUpForm";
 //error Not done
 // SignUpPage is now lean — no layout concerns, just state + card + form
 export default function SignUpPage() {
   const [email,   setEmail]         =    useState("");
   const [password1, setPassword1]   =    useState("");
   const [password2, setPassword2]   =    useState(""); 
-  const [error, setError] = useState("")
+  const [error, setError] = useState({})
 
   const handleNext = () => {
-    if (!email || !password1 || !password2) return;
-    if (password1 !== password2) {
-      setError("Passwords do not match!")
-      // alert("Passwords do not match!");
-      return;
-    }
+    // if (!email || !password1 || !password2) {
+    //   setError("Enter credentials.")
+    // };
+    
+    // if (password1 !== password2) {
+    //   setError("Passwords do not match!")
+    //   // alert("Passwords do not match!");
+    //   return;
+    // }
     
   };
 
@@ -28,16 +31,49 @@ export default function SignUpPage() {
       width={437}
       minHeight={610}
     >
-        <EmailPassword
-            email={email} setEmail={setEmail}
-            password1={password1} setPassword1={setPassword1}
-            password2={password2} setPassword2={setPassword2}
-            onSubmit={handleNext}
-            buttonLabel="Register"
-            footerText="Back"
-              footerLinkTo="/signup"
-              error = {error}
+    <div className="flex flex-col" style={{ width: 373, minHeight: 210, gap: 24 }}>
+        <form
+    className="flex flex-col"
+        style={{ width: 373, gap: 12 }}
+        onSubmit = {e => { e.preventDefault();  }}>
+        {/* { id, label, placeholder, value, onChange, icon: Icon, type = "text" } */}
+
+        <InputField 
+        id='email'
+        label='Email'
+        placeholder="Enter your email"
+        value={email}
+        onChange={e=> {setEmail(e.target.value)}}
+        icon={Mail}
+        type="email"
+          error={error}
         />
+        <PasswordField 
+        value={password1}
+        onChange={e=>setPassword1(e.target.value)}
+        />
+        
+        <PasswordField 
+        id="ConfirmPassword"
+
+        value={password2}
+        onChange={e=>setPassword2(e.target.value)}/>
+    </form>
+   
+
+     <button
+        type="button"
+        onClick={handleNext()}
+        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
+        style={{ width: 373, minHeight: 42, fontSize: 15 }}
+      >
+        Register
+      </button>
+      <Back footerText={"back"} footerLinkTo={"/signup"}  align={"left"} backArrow={"true"}/>
+
+   
+    </div>
+  
         
     </SignUpCard>
   );
