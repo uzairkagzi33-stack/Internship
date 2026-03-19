@@ -3,7 +3,7 @@ import CustomIcon from "../icons/CustomIcon";
 // ── Content Divider ───────────────────────────────────────────────────────────
 function ContentDivider() {
   return (
-    <div style={{ width: 373, height: 0, marginTop: 10, marginBottom: 10 }}>
+    <div style={{ width: 373, height: 0}}>
       <hr className="border-t border-[#E5E7EB]" style={{ margin: 0 }} />
     </div>
   );
@@ -17,7 +17,7 @@ function CardHeader({ icon, title, subtitle }) {
         {icon ?? <CustomIcon />}
       </div>
       <div
-        className="flex flex-col items-center text-center mt-4"
+        className="flex flex-col items-center text-center "
         style={{ width: 373, height: 60 }}
       >
         <h1

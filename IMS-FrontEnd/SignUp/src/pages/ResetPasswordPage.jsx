@@ -27,8 +27,11 @@ export default function SignUpPage() {
       title="Register for System Access"
       subtitle="Enter your details to Sign up."
       width={440}
-      minHeight={550}
+      minHeight={540}
     >
+<div
+style={{minHeight:140, gap:12}}
+>
 
     <PasswordField
     id="password1"
@@ -43,6 +46,7 @@ export default function SignUpPage() {
     value={password2}
     onChange={e=>setPassword2(e.target.value)}
     />
+</div>
     <Button 
         onNext = {handleNext}
         buttonLabel = {"Reset Password"}

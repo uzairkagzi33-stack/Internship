@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SignUpCard from "../components/signup/SignUpCard";
 import OtpInput from "../components/signup/OtpInput.jsx";
 import VerifyEmailLogo from "../components/icons/VerifyEmailLogo";
-import { Back, Footer } from "../components/signup/SignUpForm";
+import { Back, Button, Footer } from "../components/signup/SignUpForm";
 import { UseEmail } from "../components/contexts/EmailContext";
 //error  done 
 function VerifyOTPpage() {
@@ -50,13 +50,19 @@ function VerifyOTPpage() {
 
       <OtpInput value={otp} onChange={setOtp} error={error}/>
 
-      <button
+      <Button onNext={handleVerify} buttonLabel="Submit code" />
+      <div
+      style={{height:52}}
+      >
+
+      {/* <button
         onClick={handleVerify}
         className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
-        style={{ width: 373, height: 42, fontSize: 15 }}
+        style={{ width: 373, minHeight: 42, fontSize: 15 }}
       >
+
         Submit Code
-      </button>
+      </button> */}
 
     <Footer footerText={"Experiencing issues receiving the code?"} />
 
@@ -67,6 +73,7 @@ function VerifyOTPpage() {
         backArrow="false"
       />
 
+      </div>
     </SignUpCard>
   );
 }

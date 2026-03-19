@@ -150,7 +150,7 @@ export function PasswordField({
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex flex-col" style={{ width: 373, height: 70, gap: 8 }}>
+    <div className="flex flex-col" style={{ width: 373, height: 64, gap: 8 }}>
       <div
       className="flex justify-between "
       >
@@ -224,7 +224,7 @@ export function Footer({ footerText, footerLinkText, footerLinkTo }) {
         {footerLinkText}
       </a>
     </p>
-  ) : (<p className="mt-4 text-center text-gray-500" style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}>
+  ) : (<p className=" text-center text-gray-500" style={{ width: 373, height: 16, fontSize: 13, lineHeight: "16px" }}>
       {footerText}
       </p>)
 }

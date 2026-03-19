@@ -55,6 +55,7 @@ const [email,   setEmail]         =    useState("");
         />
         <PasswordField 
         value={password1}
+        
         onChange={e=> setPassword1(e.target.value)}
         />
         

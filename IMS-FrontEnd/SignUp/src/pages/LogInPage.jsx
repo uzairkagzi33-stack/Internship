@@ -29,7 +29,7 @@ export default function LoginPage() {
     >
       <form
         className="flex flex-col"
-        style={{ width: 373, gap: 12 }}
+        style={{ width: 373, gap: 12, height:134 }}
         onSubmit={e => { e.preventDefault(); handleLogin(); }}
       >
         <InputField

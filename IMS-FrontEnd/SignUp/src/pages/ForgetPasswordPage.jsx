@@ -32,12 +32,12 @@ navigate("/verify-otp")
       title="Forget Password?"
       subtitle="Enter your email to reset your password."
       icon={<PasswordIcon />}
-      minHeight={440}   
-      width={468}
+      minHeight={468}   
+      width={440}
     >
       <form
         className="flex flex-col"
-        style={{ width: 373, gap: 12 }}
+        style={{ width: 373, gap: 12, height:68 }}
         onSubmit={e => { e.preventDefault(); handleLogin(); }}
       >
         <InputField
@@ -56,8 +56,8 @@ navigate("/verify-otp")
       <button
         type="button"
         onClick={handleLogin}
-        className="mt-4 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
-        style={{ width: 373, height: 42, fontSize: 15 }}
+        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
+        style={{ width: 373, minHeight: 42, fontSize: 15 }}
       >
         Send OTP
       </button>
