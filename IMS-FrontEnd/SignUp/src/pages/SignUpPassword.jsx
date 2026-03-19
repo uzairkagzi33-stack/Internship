@@ -3,25 +3,30 @@ import SignUpCard from "../components/signup/SignUpCard";
 import { Mail } from "lucide-react";
 import { InputField, PasswordField } from "../components/signup/SignUpForm";
 import  { Back } from "../components/signup/SignUpForm";
-//error Not done
+import { useNavigate } from "react-router-dom";
+//error  done
 // SignUpPage is now lean — no layout concerns, just state + card + form
 export default function SignUpPage() {
-  const [email,   setEmail]         =    useState("");
+const [email,   setEmail]         =    useState("");
   const [password1, setPassword1]   =    useState("");
   const [password2, setPassword2]   =    useState(""); 
-  const [error, setError] = useState({})
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleNext = () => {
-    // if (!email || !password1 || !password2) {
-    //   setError("Enter credentials.")
-    // };
+    if (!email || !password1 || !password2) {
+      setError("Enter all credentials.");
+      return;
+    };
     
-    // if (password1 !== password2) {
-    //   setError("Passwords do not match!")
-    //   // alert("Passwords do not match!");
-    //   return;
-    // }
-    
+    if (password1 !== password2) {
+      setError("Passwords do not match!");
+      return;
+    }
+
+    setError('');
+    navigate("/login")
+    // Proceed with registration logic here
   };
 
   return (
@@ -43,27 +48,28 @@ export default function SignUpPage() {
         label='Email'
         placeholder="Enter your email"
         value={email}
-        onChange={e=> {setEmail(e.target.value)}}
+        onChange={e=> {setEmail(e.target.value); if (error) setError('');}}
         icon={Mail}
         type="email"
           error={error}
         />
         <PasswordField 
         value={password1}
-        onChange={e=>setPassword1(e.target.value)}
+        onChange={e=> setPassword1(e.target.value)}
         />
         
         <PasswordField 
         id="ConfirmPassword"
-
+        label="Confirm Password"
         value={password2}
-        onChange={e=>setPassword2(e.target.value)}/>
+        onChange={e=> setPassword2(e.target.value)}
+        />
     </form>
    
 
      <button
         type="button"
-        onClick={handleNext()}
+        onClick={handleNext}
         className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
         style={{ width: 373, minHeight: 42, fontSize: 15 }}
       >

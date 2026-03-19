@@ -1,22 +1,25 @@
 import { useState } from "react";
 import SignUpCard from "../components/signup/SignUpCard";
 import  { Back, Button, PasswordField } from "../components/signup/SignUpForm";
-//Error not done
+//Error  done
 export default function SignUpPage() {
   // const [localEmail,   setLocalEmail]         =    useState("");
   
   const [password1, setPassword1]   =    useState("");
-  const [password2, setPassword2]   =    useState(""); 
+  const [password2, setPassword2]   =    useState("");
+  const [error, setError] = useState('') 
 
   const handleNext = () => {
-    // if (!email || !password1 || !password2) return;
-    // if (password1 !== password2) {
-    //   alert("Passwords do not match!");
-    //   return;
-    // }
-    
-    // alert(`Proceeding to register: ${email}`);
-     
+    if (!password1 || !password2) {
+      setError("Please enter both passwords");
+      return;
+    }
+    if (password1 !== password2) {
+      setError("Passwords do not match!");
+      return;
+    }
+    setError('');
+    // Proceed...
   };
 
   return (
@@ -32,6 +35,7 @@ export default function SignUpPage() {
     label="New Password"
     value={password1}
     onChange={e=>setPassword1(e.target.value)}
+    error={error}
     />
     <PasswordField
     id="password2"

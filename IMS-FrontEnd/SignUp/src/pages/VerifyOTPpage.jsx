@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignUpCard from "../components/signup/SignUpCard";
 import OtpInput from "../components/signup/OtpInput.jsx";
 import VerifyEmailLogo from "../components/icons/VerifyEmailLogo";
 import { Back, Footer } from "../components/signup/SignUpForm";
 import { UseEmail } from "../components/contexts/EmailContext";
-//error not done 
+//error  done 
 function VerifyOTPpage() {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
@@ -18,12 +18,18 @@ function VerifyOTPpage() {
       setError("Please enter full 4-digit OTP")
       return;
     }
-    console.log("OTP submitted:", otp);
+    // console.log("OTP submitted:", otp);
     // TODO: Verify OTP with backend
-    alert("OTP verified! Redirecting...");
+    // alert("OTP verified! Redirecting...");
     clearEmail()
+    
     navigate("/login");
   };
+  useEffect(() => {
+    if (otp.length > 0) {
+      setError('');
+    }
+  }, [otp]);
 
   return (
     <SignUpCard 
@@ -40,6 +46,7 @@ function VerifyOTPpage() {
     minHeight={474}
     width={440}
     >
+    {/* <div>Error goes here</div> */}
 
       <OtpInput value={otp} onChange={setOtp} error={error}/>
 

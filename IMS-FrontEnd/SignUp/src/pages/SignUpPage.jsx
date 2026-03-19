@@ -2,7 +2,7 @@ import { useState } from "react";
 import SignUpCard from "../components/signup/SignUpCard";
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "../components/signup/SignUpForm";
-
+//error done
 // SignUpPage is now lean — no layout concerns, just state + card + form
 export default function SignUpPage() {
   const [fullName,   setFullName]   = useState("");

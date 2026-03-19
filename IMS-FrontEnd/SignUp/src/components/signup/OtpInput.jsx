@@ -4,7 +4,8 @@ import { useRef } from "react";
 //   value      (string)   — 4-char controlled string e.g. "4709"
 //   onChange   (fn)       — called with full 4-digit string on every change
 //   length     (number)   — number of boxes, default 4
-export default function OtpInput({ value = "", onChange, length = 4,  }) {
+export default function OtpInput({ value = "", onChange, length = 4, error }) {
+  const hasError = !!error;
     // const id = useId()
   const refs = useRef([]);
 
@@ -48,11 +49,15 @@ export default function OtpInput({ value = "", onChange, length = 4,  }) {
 
   return (
     // Wrapper: 376×64, gap 10px
-    <div
-      className="flex"
-      style={{ width: 376, height: 64, gap: 10 }}
-    >
-    {/* <span style={{color:"red"}}>{error}</span> */}
+    <div className="flex gap-1" style={{ width: 376 }}>
+      {/* {hasError && (
+        <span className="text-red-600 text-xs" style={{fontSize:12, height:14}}>
+          {error}
+        </span> */}
+      {/* )} */}
+    {/* <label className="block text-red-600 text-xs mt-1 mb-2" style={{fontSize:12, height:14}}>
+      {error}
+    </label> */}
       {digits.map((digit, idx) => (
         <input
           key={idx}
@@ -64,20 +69,25 @@ export default function OtpInput({ value = "", onChange, length = 4,  }) {
           value={digit}
         //   id= {Math.random}
         id={idx}
-          onChange={e => handleInput(e, idx)}
+          onChange={e => {
+            handleInput(e, idx);
+          }}
           onKeyDown={e => handleKey(e, idx)}
           onPaste={handlePaste}
-          className="border border-gray-200 rounded-[10px] text-center text-gray-900 bg-white outline-none transition-all
-            focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
-          style={{
-            width: 86.5,
-            height: 64,
-            fontSize: 24,
-            fontWeight: 500,
-            lineHeight: "32px",
-            // keep filled boxes highlighted even when not focused
-            borderColor: digit ? "rgba(37, 99, 235, 1)" : undefined,
-          }}
+
+
+          className={`border rounded-[10px] text-center text-gray-900 bg-white outline-none transition-all
+          ${hasError
+            ? "border-red-600 ring-2 ring-red-600/20 "
+            : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"}`}
+        style={{
+        width: 86.5,
+        height: 64,
+        fontSize: 24,
+        fontWeight: 500,
+        lineHeight: "32px",
+        borderColor: hasError ? "#dc2626" : "#3182ce",  // red-600 : blue
+        }}
         />
       ))}
     </div>

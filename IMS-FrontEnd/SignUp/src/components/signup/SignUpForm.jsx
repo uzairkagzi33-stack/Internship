@@ -99,63 +99,7 @@ export function RoleSelector({
     </div>
   );
 }
-export function EmailPassword({
-  email, setEmail,
-  passwordA, setPasswordA,
-  passwordB, setPasswordB,
-  buttonLabel = "Register",
-  onSubmit, footerText = "Back",
-  footerLinkTo = "/signup",
-  alignFooter = 'left',
-  error
-  
-} 
-) {
-  return (
-    <div className="flex flex-col" style={{ width: 373, minHeight: 210, gap: 24 }}>
-    <form
-    className="flex flex-col"
-        style={{ width: 373, gap: 12 }}
-        onSubmit={e => { e.preventDefault(); onSubmit(); }}>
-        {/* { id, label, placeholder, value, onChange, icon: Icon, type = "text" } */}
 
-        <InputField 
-        id='email'
-        label='Email'
-        placeholder="Enter your email"
-        value={email}
-        onChange={e=> setEmail(e.target.value)}
-        icon={Mail}
-        type="email"
-          error={error}
-        />
-        <PasswordField 
-        value={passwordA}
-        onChange={setPasswordA}
-        />
-        
-        <PasswordField 
-        id="ConfirmPassword"
-
-        value={passwordB}
-        onChange={setPasswordB}/>
-    </form>
-   
-
-     <button
-        type="button"
-        onClick={onSubmit}
-        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
-        style={{ width: 373, minHeight: 42, fontSize: 15 }}
-      >
-        {buttonLabel}
-      </button>
-      <Back footerText={footerText} footerLinkTo={footerLinkTo}  align={alignFooter} backArrow={"true"}/>
-
-   
-    </div>
-  );
-}
 export function Back({footerText, footerLinkTo, align = 'center', backArrow = 'true'}){
   return footerText && (
     <div
@@ -200,24 +144,28 @@ export function PasswordField({
   id          = "password",
   label       = "Password",
   placeholder = "• • • • • • • • • • ",
-  value,
-  onChange, error
+  value, error,
+  onChange,
 }) {
   const [show, setShow] = useState(false);
 
   return (
     <div className="flex flex-col" style={{ width: 373, height: 70, gap: 8 }}>
-      <div className="flex justify-between">
-        <label
-          htmlFor={id}
-          className="text-gray-900 font-medium justify-start"
-          style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
-        >
-          {label}
-        </label>
-        <span className="text-red-600" style={{fontSize: 12}}>
-          {console.log(`${error}`)}
-        </span>
+      <div
+      className="flex justify-between "
+      >
+
+      <label
+        htmlFor={id}
+        className="text-gray-900 font-medium justify-start"
+        style={{ height: 14, fontSize: 12, lineHeight: "14px" }}
+      >
+        {label}
+      </label>
+    <span className=" text-red-600"
+      style={{fontSize: 12, height:14}}>
+          {error}
+    </span>
       </div>
       <div className="relative flex items-center" style={{ height: 36 }}>
 
