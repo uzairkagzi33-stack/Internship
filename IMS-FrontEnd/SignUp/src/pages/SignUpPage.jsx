@@ -10,7 +10,7 @@ export default function SignUpPage() {
   const [role,       setRole]       = useState(null);
   const [error, setError] =useState("")
   const navigate = useNavigate()
-
+//Error showing Done.
   const handleNext = () => {
     if (!fullName || !department || !role) {
       setError("EnterFull Creds")

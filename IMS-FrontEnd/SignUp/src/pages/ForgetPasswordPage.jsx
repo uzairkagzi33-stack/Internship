@@ -7,7 +7,7 @@ import PasswordIcon from "../components/icons/PasswordIcon";
 import { UseEmail } from "../components/contexts/EmailContext";
 
 export default function ForgetPasswordPage() {
-
+//Error Showing Done
   const [localEmail,    setLocalEmail]    = useState("");
   const navigate = useNavigate();
   const { setEmail } = UseEmail();

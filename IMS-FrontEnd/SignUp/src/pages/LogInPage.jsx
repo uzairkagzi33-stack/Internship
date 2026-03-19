@@ -4,7 +4,7 @@ import { Mail, LockKeyhole  } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
 import { InputField, Footer}      from "../components/signup/SignUpForm";
 import ForgetPassword from "../components/login/ForgetPassword";
-
+//Error showing done
 export default function LoginPage() {
   const [email,    setEmail]    = useState("");
   const [password, setPassword] = useState("");

@@ -1,12 +1,10 @@
 import { useState } from "react";
 import SignUpCard from "../components/signup/SignUpCard";
-import SignUpForm, { Back, Button, PasswordField } from "../components/signup/SignUpForm";
-import { EmailPassword } from "../components/signup/SignUpForm";
-import PasswordIcon from "../components/icons/PasswordIcon";
-
-// SignUpPage is now lean — no layout concerns, just state + card + form
+import  { Back, Button, PasswordField } from "../components/signup/SignUpForm";
+//Error not done
 export default function SignUpPage() {
-//   const [email,   setEmail]         =    useState("");
+  // const [localEmail,   setLocalEmail]         =    useState("");
+  
   const [password1, setPassword1]   =    useState("");
   const [password2, setPassword2]   =    useState(""); 
 
@@ -16,6 +14,7 @@ export default function SignUpPage() {
     //   alert("Passwords do not match!");
     //   return;
     // }
+    
     // alert(`Proceeding to register: ${email}`);
      
   };

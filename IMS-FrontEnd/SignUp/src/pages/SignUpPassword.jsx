@@ -3,7 +3,7 @@ import SignUpCard from "../components/signup/SignUpCard";
 import SignUpForm, { Back } from "../components/signup/SignUpForm";
 import { EmailPassword } from "../components/signup/SignUpForm";
 import PasswordIcon from "../components/icons/PasswordIcon";
-
+//error Not done
 // SignUpPage is now lean — no layout concerns, just state + card + form
 export default function SignUpPage() {
   const [email,   setEmail]         =    useState("");
@@ -18,7 +18,7 @@ export default function SignUpPage() {
       // alert("Passwords do not match!");
       return;
     }
-    alert(`Proceeding to register: ${email}`); 
+    
   };
 
   return (

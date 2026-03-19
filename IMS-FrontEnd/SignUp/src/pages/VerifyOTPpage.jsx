@@ -5,7 +5,7 @@ import OtpInput from "../components/signup/OtpInput.jsx";
 import VerifyEmailLogo from "../components/icons/VerifyEmailLogo";
 import { Back, Footer } from "../components/signup/SignUpForm";
 import { UseEmail } from "../components/contexts/EmailContext";
-
+//error not done 
 function VerifyOTPpage() {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
