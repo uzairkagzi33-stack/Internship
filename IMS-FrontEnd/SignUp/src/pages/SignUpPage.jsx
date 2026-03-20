@@ -24,8 +24,9 @@ export default function SignUpPage() {
     <SignUpCard
       title="Create a new account"
       subtitle="Enter your details to Sign up."
-      width={437}
-      minHeight={578}
+      // width={437}
+      // minHeight={578}
+      styles = 'w-93.25 min-h-144.5'
     >
       <SignUpForm
         fullName={fullName}       setFullName={setFullName}

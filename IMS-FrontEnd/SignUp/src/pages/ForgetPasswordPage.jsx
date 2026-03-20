@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Mail } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
-import { InputField,Back }      from "../components/signup/SignUpForm";
+import { InputField,Back, Button }      from "../components/signup/SignUpForm";
 import { useState } from "react";
 import PasswordIcon from "../components/icons/PasswordIcon";
 import { UseEmail } from "../components/contexts/EmailContext";
@@ -23,21 +23,21 @@ export default function ForgetPasswordPage() {
       return;
     }
     setEmail(localEmail); 
-//
-navigate("/verify-otp")
+    //
+    navigate("/verify-otp")
   };
-
+  const cardStyles = {  minHeight:468 , width:440}
+  
   return (
     <SignUpCard
       title="Forget Password?"
       subtitle="Enter your email to reset your password."
       icon={<PasswordIcon />}
-      minHeight={468}   
-      width={440}
+      styles={cardStyles}
     >
       <form
         className="flex flex-col"
-        style={{ width: 373, gap: 12, height:68 }}
+        style={{ width: 376, gap: 12, height:68 }}
         onSubmit={e => { e.preventDefault(); handleLogin(); }}
       >
         <InputField
@@ -52,15 +52,8 @@ navigate("/verify-otp")
         />
       </form>
       {/* <ForgetPassword /> */}
-
-      <button
-        type="button"
-        onClick={handleLogin}
-        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
-        style={{ width: 373, minHeight: 42, fontSize: 15 }}
-      >
-        Send OTP
-      </button>
+      <Button onNext={handleLogin} buttonLabel="Send OTP"/>
+      
           <Back footerText="Back" footerLinkTo="/login" />
     </SignUpCard>
   );

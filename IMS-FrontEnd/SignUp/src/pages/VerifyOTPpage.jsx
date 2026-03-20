@@ -43,8 +43,8 @@ function VerifyOTPpage() {
       }
     icon={<VerifyEmailLogo />}
     showDivider
-    minHeight={474}
-    width={440}
+    styles={'min-h-118.5 w-[473px]'}
+    className = 'w-[]'
     >
     {/* <div>Error goes here</div> */}
 
@@ -52,7 +52,7 @@ function VerifyOTPpage() {
 
       <Button onNext={handleVerify} buttonLabel="Submit code" />
       <div
-      style={{height:52}}
+      className="h-13"
       >
 
       {/* <button

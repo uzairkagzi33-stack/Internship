@@ -3,8 +3,8 @@ import CustomIcon from "../icons/CustomIcon";
 // ── Content Divider ───────────────────────────────────────────────────────────
 function ContentDivider() {
   return (
-    <div style={{ width: 373, height: 0}}>
-      <hr className="border-t border-[#E5E7EB]" style={{ margin: 0 }} />
+    <div className="w-93.25 h-0">
+      <hr className="border-t border-gray-200 m-0" />
     </div>
   );
 }
@@ -12,23 +12,21 @@ function ContentDivider() {
 // ── Card Header ───────────────────────────────────────────────────────────────
 function CardHeader({ icon, title, subtitle }) {
   return (
-    <div className="flex flex-col items-center" style={{ width: 373, gap:8 }}>
-      <div style={{ width: 88, height: 88 }}>
+    <div className="flex flex-col items-center w-93.25 gap-2">
+      <div className='w-22 h-22'
+      >
         {icon ?? <CustomIcon />}
       </div>
       <div
-        className="flex flex-col items-center text-center "
-        style={{ width: 373, height: 60 }}
+        className="flex flex-col items-center text-center w-93.25 h-15"
       >
         <h1
-          className="font-semibold text-gray-900"
-          style={{ width: 373, height: 32, fontSize: 24, lineHeight: "32px" }}
+          className="font-semibold text-gray-900 w-93.25 h-8 text-2xl leading-8"
         >
           {title}
         </h1>
         <p
-          className="text-gray-500"
-          style={{ width: 373, height: 24, fontSize: 14, lineHeight: "24px" }}
+          className="text-gray-500 w-93.25 h-6 text-sm leading-6"
         >
           {subtitle}
         </p>
@@ -51,14 +49,14 @@ export default function SignUpCard({
   subtitle    = "Enter your details to Sign up.",
   icon,
   showDivider = true,
-  width       = 437,
-  minHeight   = 600,
+  // width       = 437,
+  // minHeight   = 600,
+  styles,
   children,
 }) {
   return (
     <div
-      className="relative z-10 bg-white rounded-3xl shadow-md flex flex-col items-center"
-      style={{ width, minHeight, padding: "32px", gap:"24px" }}
+      className={`relative z-10 bg-white w-109.25  rounded-3xl p-8 gap-6 shadow-md flex flex-col items-center ${styles}`}
     >
       <CardHeader icon={icon} title={title} subtitle={subtitle} />
       {showDivider && <ContentDivider />}

@@ -33,13 +33,11 @@ const [email,   setEmail]         =    useState("");
     <SignUpCard
       title="Register for System Access"
       subtitle="Enter your details to Sign up."
-      width={437}
-      minHeight={610}
+      styles={'w-93.25 min-h-152.5'}
     >
     <div className="flex flex-col" style={{ width: 373, minHeight: 210, gap: 24 }}>
         <form
-    className="flex flex-col"
-        style={{ width: 373, gap: 12 }}
+    className="flex flex-col w-93.25 gap-3"
         onSubmit = {e => { e.preventDefault();  }}>
         {/* { id, label, placeholder, value, onChange, icon: Icon, type = "text" } */}
 
@@ -71,8 +69,7 @@ const [email,   setEmail]         =    useState("");
      <button
         type="button"
         onClick={handleNext}
-        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
-        style={{ width: 373, minHeight: 42, fontSize: 15 }}
+        className="rounded-lg bg-blue-600 w-93.25 min-h-10.5 text-[15px] text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer"
       >
         Register
       </button>

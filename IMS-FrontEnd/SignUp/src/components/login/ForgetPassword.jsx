@@ -3,10 +3,11 @@ import React from 'react'
 export default function ForgetPassword({ linkTo, linkText }) {
   return (
     <div
-    className='flex items-center justify-between px-1 '
-    style={{width:"376px",height:"20px"}}
+    className='flex items-center justify-between px-1 w-93.25 h-5'
     >
-    <div style={{width:"180px", height:'20px', display: 'flex', alignItems: 'center'}}>
+    <div 
+    className='w-45 h-5 flex items-center'
+    >
 
     <input
     type='checkbox'
@@ -15,15 +16,13 @@ export default function ForgetPassword({ linkTo, linkText }) {
     />
     <label
     htmlFor='cb1'
-    className='text-slate-900 ml-2'
-    style={{fontSize:13, lineHeight:"20px"}}
+    className='text-slate-900 ml-2 text-[13px] leading-5'
     >
         Keep me logged in
     </label>
     </div>
     <div 
-    style={{width:"180px", height:'20px',textAlign:"right",fontSize:13, lineHeight:"20px"}}
-    className='text-slate-900 underline cursor-pointer hover:text-blue-600 active:text-blue-800'>
+    className='text-slate-900  text-center h-5 text-[13px] leading-5 underline cursor-pointer hover:text-blue-600 active:text-blue-800'>
     <a href={linkTo}>{linkText}</a>
     </div>
 

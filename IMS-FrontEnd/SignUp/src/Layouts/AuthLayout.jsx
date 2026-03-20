@@ -17,7 +17,7 @@ import PatternBackground from "../components/layout/PatternBackground";
 
 export default function AuthLayout() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F0F2F5]">
+    <div className="min-h-screen flex flex-col bg-gray-100">
 
       {/* Header: 1352×40 */}
       <Header />

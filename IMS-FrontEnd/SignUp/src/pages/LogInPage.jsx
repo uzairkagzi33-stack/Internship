@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, LockKeyhole  } from "lucide-react";
 import SignUpCard          from "../components/signup/SignUpCard";
-import { InputField, Footer}      from "../components/signup/SignUpForm";
+import { InputField, Footer, Button}      from "../components/signup/SignUpForm";
 import ForgetPassword from "../components/login/ForgetPassword";
 //Error showing done
 export default function LoginPage() {
@@ -20,15 +20,21 @@ export default function LoginPage() {
     
     navigate("/dashboard");
   };
+  // const cardStyles = {
+  //   minHeight:552, width:540
+  // }
 
   return (
+
     <SignUpCard
       title="Login to your account"
       subtitle="Enter your detail to login."
-      minHeight={420}
+      styles='min-h-105'
+      // className ='min-h-105'
+      // minHeight={420}
     >
       <form
-        className="flex flex-col"
+        className="flex flex-col w-93.25 gap-3 h-33.5"
         style={{ width: 373, gap: 12, height:134 }}
         onSubmit={e => { e.preventDefault(); handleLogin(); }}
       >
@@ -53,21 +59,21 @@ export default function LoginPage() {
         />
       </form>
       <ForgetPassword
-      linkTo = '/forget-password'
-      linkText ='Forgot password?'
+        linkTo = '/forget-password'
+        linkText ='Forgot password?'
       />
 
-      <button
+    <Button buttonLabel="Login" onNext={handleLogin}/>
+      {/* <button
         type="button"
         onClick={handleLogin}
-        className="rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
-        style={{ width: 373, height: 42, fontSize: 15 }}
+        className="rounded-lg bg-blue-600 w-93.25 h-10.5 text-[15px] text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
       >
         Login
-      </button>
+      </button> */}
       <Footer
-        footerLinkTo={"/signup"}
         footerText={"Don't have an account? "}
+        footerLinkTo={"/signup"}
         footerLinkText={"Sign up now"}
       />
       

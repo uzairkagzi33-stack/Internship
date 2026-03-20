@@ -21,16 +21,15 @@ export default function SignUpPage() {
     setError('');
     // Proceed...
   };
+  // const cardStyles = { width : 440 , minHeight : 540}
 
   return (
     <SignUpCard
       title="Register for System Access"
       subtitle="Enter your details to Sign up."
-      width={440}
-      minHeight={540}
+      // styles={cardStyles}
     >
-<div
-style={{minHeight:140, gap:12}}
+<form className="min-h-35 gap-3"
 >
 
     <PasswordField
@@ -46,7 +45,7 @@ style={{minHeight:140, gap:12}}
     value={password2}
     onChange={e=>setPassword2(e.target.value)}
     />
-</div>
+</form>
     <Button 
         onNext = {handleNext}
         buttonLabel = {"Reset Password"}

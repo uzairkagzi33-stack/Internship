@@ -76,16 +76,11 @@ export default function OtpInput({ value = "", onChange, length = 4, error }) {
           onPaste={handlePaste}
 
 
-          className={`border rounded-[10px] text-center text-gray-900 bg-white outline-none transition-all
+          className={`border rounded-[10px] w-[86.5px] h-16 text-2xl font-medium leading-8 text-center text-gray-900 bg-white outline-none transition-all
           ${hasError
             ? "border-red-600 ring-2 ring-red-600/20 "
             : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"}`}
         style={{
-        width: 86.5,
-        height: 64,
-        fontSize: 24,
-        fontWeight: 500,
-        lineHeight: "32px",
         borderColor: hasError ? "#dc2626" : "#3182ce",  // red-600 : blue
         }}
         />
