@@ -98,7 +98,7 @@ export function RoleSelector({
 export function Back({footerText, footerLinkTo, align = 'center', backArrow = 'true'}){
   return footerText && (
     <div
-      className={`flex w-full text-gray-950 leading-10.5 px-2.5 h-10.5 py-4 gap-0.5 underline-offset-2 underline font-bold ${align === 'left' ? 'justify-start' : 'justify-center'}`}
+      className={`flex w-full text-gray-950 leading-10.5 px-2.5 h-10.5 py-4 gap-0.5 font-bold ${align === 'left' ? 'justify-start' : 'justify-center'}`}
     >
       <div 
       
@@ -109,7 +109,7 @@ export function Back({footerText, footerLinkTo, align = 'center', backArrow = 't
         
         <Link
           to={footerLinkTo}
-          className="font-medium leading-5 tracking-tighter w-12.5 h-5"
+          className="font-medium leading-5 tracking-tighter w-12.5 h-5 underline-offset-2 underline"
         >
           {footerText}
         </Link>
