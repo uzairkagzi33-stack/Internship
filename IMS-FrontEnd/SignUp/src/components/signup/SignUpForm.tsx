@@ -1,6 +1,7 @@
 import { CircleUserRound, Building2, Mail, LockKeyhole, ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import {  Eye, EyeOff } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 // ── Reusable Input Field ──────────────────────────────────────────────────────
 // Props:
@@ -106,12 +107,12 @@ export function Back({footerText, footerLinkTo, align = 'center', backArrow = 't
         <ArrowLeft size={16} />:null
         }
         
-        <a
-          href={footerLinkTo}
+        <Link
+          to={footerLinkTo}
           className="font-medium leading-5 tracking-tighter w-12.5 h-5"
         >
           {footerText}
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -204,14 +205,22 @@ export function PasswordField({
 }
 
 
-export function Footer({ footerText, footerLinkText, footerLinkTo }) {
+export function Footer({
+  footerText,
+  footerLinkText,
+  footerLinkTo,
+}: {
+  footerText?: ReactNode;
+  footerLinkText?: string;
+  footerLinkTo?: string;
+}) {
   return (
     <p className="text-center text-gray-500 w-93.25 text-sm leading-5 h-4 py-1">
       {footerText}
       {footerLinkText && (
-        <a href={footerLinkTo} className="text-blue-600 font-medium underline underline-offset-2 ml-1">
+        <Link to={footerLinkTo} className="text-blue-600 font-medium underline underline-offset-2 ml-1">
           {footerLinkText}
-        </a>
+        </Link>
       )}
     </p>
   );
@@ -229,17 +238,41 @@ export function Footer({ footerText, footerLinkText, footerLinkTo }) {
 //   footerLinkText(string)         — link label
 //   footerLinkTo  (string)         — href for the footer link
 //   roleOptions   (array)          — custom role options passed to RoleSelector
+type SignUpFormProps = {
+  fullName: string;
+  setFullName: (_next: string) => void;
+  department: string;
+  setDepartment: (_next: string) => void;
+  role: string | null;
+  setRole: (_next: string) => void;
+  onNext: () => void | Promise<void>;
+  buttonLabel?: string;
+  footerText?: string;
+  footerLinkText?: string;
+  footerLinkTo?: string;
+  roleOptions?: { value: string; label: string }[];
+  fullNameError?: string;
+  departmentError?: string;
+  roleError?: string;
+};
+
 export default function SignUpForm({
-  fullName,       setFullName,
-  department,     setDepartment,
-  role,           setRole,
+  fullName,
+  setFullName,
+  department,
+  setDepartment,
+  role,
+  setRole,
   onNext,
-  buttonLabel    = "Next",
-  footerText     = "Already have an account?",
+  buttonLabel = "Next",
+  footerText = "Already have an account?",
   footerLinkText = "Login",
-  footerLinkTo   = "/login", 
-  roleOptions,error
-}) {
+  footerLinkTo = "/login",
+  roleOptions,
+  fullNameError,
+  departmentError,
+  roleError,
+}: SignUpFormProps) {
   return (
     <>
       {/* Form: 373×204 */}
@@ -254,7 +287,7 @@ export default function SignUpForm({
           value={fullName}
           onChange={e => setFullName(e.target.value)}
           icon={CircleUserRound}
-          error={error}
+          error={fullNameError}
         />
         <InputField
           id="department"
@@ -263,7 +296,9 @@ export default function SignUpForm({
           value={department}
           onChange={e => setDepartment(e.target.value)}
           icon={Building2}
+          error={departmentError}
         />
+        <span className="text-red-600 text-xs h-3.5">{roleError}</span>
         <RoleSelector
           role={role}
           onSelect={setRole}

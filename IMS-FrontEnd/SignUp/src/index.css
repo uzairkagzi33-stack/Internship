@@ -1,6 +1,6 @@
 @import "tailwindcss";
 /* eslint-disable-next-line no-unused-vars */
-@theme{
+@theme {
   --font-inter: "Inter Variable", sans-serif;
 }
 
