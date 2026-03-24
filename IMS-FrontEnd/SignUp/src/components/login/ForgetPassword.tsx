@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "@tanstack/react-router";
 
 export default function ForgetPassword({ linkTo, linkText }) {
   return (
@@ -23,7 +23,7 @@ export default function ForgetPassword({ linkTo, linkText }) {
     </div>
     <div 
     className='text-slate-900  text-center h-5 text-[13px] leading-5 underline cursor-pointer hover:text-blue-600 active:text-blue-800'>
-    <a href={linkTo}>{linkText}</a>
+    <Link to={linkTo}>{linkText}</Link>
     </div>
 
     </div>

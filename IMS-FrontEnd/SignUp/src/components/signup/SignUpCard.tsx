@@ -1,4 +1,20 @@
 import CustomIcon from "../icons/CustomIcon";
+import type { ReactNode } from "react";
+
+type CardHeaderProps = {
+  icon?: ReactNode;
+  title: string;
+  subtitle: ReactNode;
+};
+
+type SignUpCardProps = {
+  title?: string;
+  subtitle?: ReactNode;
+  icon?: ReactNode;
+  showDivider?: boolean;
+  styles?: string;
+  children: ReactNode;
+};
 
 // ── Content Divider ───────────────────────────────────────────────────────────
 function ContentDivider() {
@@ -10,7 +26,7 @@ function ContentDivider() {
 }
 
 // ── Card Header ───────────────────────────────────────────────────────────────
-function CardHeader({ icon, title, subtitle }) {
+function CardHeader({ icon, title, subtitle }: CardHeaderProps) {
   return (
     <div className="flex flex-col items-center w-93.25 gap-2">
       <div className='w-22 h-22'
@@ -53,10 +69,10 @@ export default function SignUpCard({
   // minHeight   = 600,
   styles,
   children,
-}) {
+}: SignUpCardProps) {
   return (
     <div
-      className={`relative z-10 bg-white w-109.25  rounded-3xl p-8 gap-6 shadow-md flex flex-col items-center ${styles}`}
+      className={`relative z-10 bg-white w-109.25  rounded-3xl p-8 gap-6 shadow-md flex flex-col items-center ${styles ?? ""}`}
     >
       <CardHeader icon={icon} title={title} subtitle={subtitle} />
       {showDivider && <ContentDivider />}

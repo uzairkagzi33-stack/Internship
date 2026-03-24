@@ -1,20 +1,27 @@
-import { useRef } from "react";
+import { useRef, type ChangeEvent, type ClipboardEvent, type KeyboardEvent } from "react";
+
+type OtpInputProps = {
+  value?: string;
+  onChange?: (_next: string) => void;
+  length?: number;
+  error?: string;
+};
+
 // ── OtpInput ──────────────────────────────────────────────────────────────────
 // Props:
 //   value      (string)   — 4-char controlled string e.g. "4709"
 //   onChange   (fn)       — called with full 4-digit string on every change
 //   length     (number)   — number of boxes, default 4
-export default function OtpInput({ value = "", onChange, length = 4, error }) {
+export default function OtpInput({ value = "", onChange, length = 4, error }: OtpInputProps) {
   const hasError = !!error;
-    // const id = useId()
-  const refs = useRef([]);
+  const refs = useRef<(HTMLInputElement | null)[]>([]);
 
   // Split string into array of individual chars
   const digits = Array.from({ length }, (_, i) => value[i] || "");
 
-  const update = (arr) => onChange?.(arr.join(""));
+  const update = (arr: string[]) => onChange?.(arr.join(""));
 
-  const handleInput = (e, idx) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>, idx: number) => {
     const digit = e.target.value.replace(/[^0-9]/g, "").slice(-1);
     const next  = [...digits];
     next[idx]   = digit;
@@ -22,7 +29,7 @@ export default function OtpInput({ value = "", onChange, length = 4, error }) {
     if (digit && idx < length - 1) refs.current[idx + 1]?.focus();
   };
 
-  const handleKey = (e, idx) => {
+  const handleKey = (e: KeyboardEvent<HTMLInputElement>, idx: number) => {
     if (e.key === "Backspace") {
       if (!digits[idx] && idx > 0) {
         const next = [...digits];
@@ -39,7 +46,7 @@ export default function OtpInput({ value = "", onChange, length = 4, error }) {
     if (e.key === "ArrowRight" && idx < length - 1) refs.current[idx + 1]?.focus();
   };
 
-  const handlePaste = (e) => {
+  const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     const text = e.clipboardData.getData("text").replace(/[^0-9]/g, "").slice(0, length);
     const next  = Array.from({ length }, (_, i) => text[i] || "");
@@ -61,14 +68,16 @@ export default function OtpInput({ value = "", onChange, length = 4, error }) {
       {digits.map((digit, idx) => (
         <input
           key={idx}
-          ref={el => (refs.current[idx] = el)}
+          ref={(el) => {
+            refs.current[idx] = el;
+          }}
           type="text"
           inputMode="numeric"
           pattern="[0-9]"
           maxLength={1}
           value={digit}
         //   id= {Math.random}
-        id={idx}
+        id={`otp-${idx}`}
           onChange={e => {
             handleInput(e, idx);
           }}
